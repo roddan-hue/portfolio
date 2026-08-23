@@ -56,6 +56,20 @@ mat-card-content p {
   margin-top: 1rem;
 }
 
+.technology-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.technology-tags p-chip {
+  font-size: 0.70rem;
+  --p-chip-background: #4e515a;
+  --p-chip-padding: 0.3rem 0.55rem;
+}
+
 mat-card-actions {
   margin-top: 1.5rem;
   display: flex;
