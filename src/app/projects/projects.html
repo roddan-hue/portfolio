@@ -1,117 +1,77 @@
 <div class="projects-container">
   <h1 class="projects-title">My Projects</h1>
   <p class="projects-subtitle">
-    A collection of the work I've built — from cloud-hosted personal sites to
-    AI-powered product review platforms.
+    A collection of cloud-hosted web platforms, AI platforms, and full-stack applications — built for scalability, performance, and reliability.
   </p>
 
+  <!-- Category Filter Buttons -->
+  <div class="category-filters" role="group" aria-label="Filter projects by category">
+    @for (cat of categories; track cat.key) {
+      <button
+        type="button"
+        class="filter-btn"
+        [class.active]="selectedCategory() === cat.key"
+        (click)="setCategory(cat.key)"
+      >
+        {{ cat.label }}
+      </button>
+    }
+  </div>
+
   <div class="projects-grid">
+    @for (project of filteredProjects(); track project.id) {
+      <mat-card class="project-card">
+        <div class="card-header-row">
+          <span class="status-badge">{{ project.status }}</span>
+          <span class="category-badge">{{ project.categoryLabel }}</span>
+        </div>
 
-    <!-- Project 1: roddaniels.com -->
-    <mat-card class="project-card">
-      <mat-card-header>
-        <mat-card-title>Portfolio Website</mat-card-title>
-        <mat-card-subtitle>roddaniels.com</mat-card-subtitle>
-      </mat-card-header>
+        <mat-card-header>
+          <mat-card-title>{{ project.title }}</mat-card-title>
+          <mat-card-subtitle>{{ project.subtitle }}</mat-card-subtitle>
+        </mat-card-header>
 
-      <mat-card-content>
-        <p>
-          A clean, fast, and fully serverless personal portfolio hosted on AWS S3
-          and delivered globally through CloudFront. Built with Angular and designed
-          to showcase my skills, experience, and projects.
-        </p>
-      </mat-card-content>
+        <mat-card-content>
+          <p class="project-description">{{ project.description }}</p>
 
-      <div class="technology-tags" aria-label="Technologies used">
-        <p-chip label=Angular />
-        <p-chip label=TypeScript />
-        <p-chip label=AWS />
-        <p-chip label=Github />
-        <p-chip label="Github Actions" />
-      </div>
+          <div class="project-highlights">
+            <h4 class="highlights-title">Key Highlights:</h4>
+            <ul>
+              @for (highlight of project.highlights; track highlight) {
+                <li>{{ highlight }}</li>
+              }
+            </ul>
+          </div>
+        </mat-card-content>
 
-      <mat-card-actions>
-        <a href="https://roddaniels.com" target="_blank" rel="noopener noreferrer">
-          <p-button
-            label="Visit Site"
-            severity="primary"
-            raised
-          ></p-button>
-      </a>
-        <a href="https://github.com/roddan-hue/portfolio" target="_blank" rel="noopener noreferrer">
-          <p-button
-            label="View Source"
-            severity="secondary"
-            raised
-          ></p-button>
-        </a>
-      </mat-card-actions>
-    </mat-card>
+        <div class="technology-tags" aria-label="Technologies used">
+          @for (tech of project.technologies; track tech) {
+            <p-chip [label]="tech" />
+          }
+        </div>
 
-    <!-- Project 2: bossrod.com -->
-    <mat-card class="project-card">
-      <mat-card-header>
-        <mat-card-title>BOSSROD REVIEWS</mat-card-title>
-        <mat-card-subtitle>bossrod.com</mat-card-subtitle>
-      </mat-card-header>
+        <mat-card-actions>
+          <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer">
+            <p-button
+              label="Visit Site"
+              severity="primary"
+              raised
+              icon="pi pi-external-link"
+            ></p-button>
+          </a>
 
-      <mat-card-content>
-        <p>
-          An AI-powered product review and comparison platform that aggregates
-          Amazon product data, summarizes reviews, and ranks items based on
-          real buyer insights. Built with Angular, Node.js, and cloud hosting.
-        </p>
-      </mat-card-content>
-
-      
-      <div class="technology-tags" aria-label="Technologies used">
-        <p-chip label="Wordpress" />
-        <p-chip label="AI-In Progress" />
-        <p-chip label="AWS" />
-      </div>
-
-      <mat-card-actions>
-        <a href="https://bossrod.com" target="_blank" rel="noopener noreferrer">
-          <p-button
-            label="Visit Site"
-            severity="primary"
-            raised
-          ></p-button>
-        </a>
-      </mat-card-actions>
-    </mat-card>
-
-    <!-- Project 3: movies.bossrod.com -->
-    <mat-card class="project-card">
-      <mat-card-header>
-        <mat-card-title>Movies</mat-card-title>
-        <mat-card-subtitle>movies.bossrod.com</mat-card-subtitle>
-      </mat-card-header>
-
-      <mat-card-content>
-        <p>
-          A fast, minimalist movie‑search platform that lets users browse through thousands of films with instant results. The interface highlights each title with its poster, rating, language tags, and release year, creating a clean and efficient browsing experience.
-        </p>
-      </mat-card-content>
-
-      <div class="technology-tags" aria-label="Technologies used">
-        <p-chip label="React" />
-        <p-chip label="Tailwind CSS" />
-        <p-chip label="AWS" />
-        <p-chip label="Appwrite" />
-        <p-chip label="Javascript" />
-      </div>
-
-      <mat-card-actions>
-        <a href="https://movies.bossrod.com" target="_blank" rel="noopener noreferrer">
-          <p-button
-            label="Visit Site"
-            severity="primary"
-            raised
-          ></p-button>
-        </a>
-      </mat-card-actions>
-    </mat-card>
-
+          @if (project.githubUrl) {
+            <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer">
+              <p-button
+                label="View Source"
+                severity="secondary"
+                raised
+                icon="pi pi-github"
+              ></p-button>
+            </a>
+          }
+        </mat-card-actions>
+      </mat-card>
+    }
   </div>
 </div>
