@@ -13,80 +13,204 @@
 .projects-title {
   font-size: 2.6rem;
   font-weight: 700;
-  color: #000000;
+  color: #1a2530;
   margin-bottom: 0.5rem;
 }
 
 .projects-subtitle {
-  font-size: 1.2rem;
-  color: #546e7a;
-  margin-bottom: 3rem;
+  font-size: 1.15rem;
+  color: #4a607a;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+}
+
+/* Category Filter Buttons */
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+  background-color: #ffffff;
+  color: #334e68;
+  border: 1px solid #cbd5e1;
+  padding: 0.55rem 1.25rem;
+  border-radius: 20px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background-color: #e2e8f0;
+    border-color: #94a3b8;
+    color: #0f172a;
+  }
+
+  &.active {
+    background-color: #1e293b;
+    color: #ffffff;
+    border-color: #1e293b;
+    box-shadow: 0 3px 8px rgba(30, 41, 59, 0.2);
+  }
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 2rem;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .project-card {
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  animation: fadeIn 1s ease;
-  border: 1px solid #e8eaef;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  animation: fadeIn 0.6s ease;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.status-badge {
+  background-color: #dcfce7;
+  color: #166534;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 12px;
+  border: 1px solid #bbf7d0;
+}
+
+.category-badge {
+  background-color: #f1f5f9;
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border-radius: 12px;
+}
+
+mat-card-header {
+  padding: 0;
+  margin-bottom: 0.75rem;
 }
 
 mat-card-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #2c3e50;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 mat-card-subtitle {
-  font-size: 1rem;
-  color: #546e7a;
+  font-size: 0.95rem;
+  color: #0284c7;
+  font-weight: 500;
+  margin-top: 0.2rem;
 }
 
-mat-card-content p {
-  font-size: 1.05rem;
-  color: #546e7a;
-  margin-top: 1rem;
+mat-card-content {
+  padding: 0;
+  flex: 1;
+}
+
+.project-description {
+  font-size: 0.98rem;
+  color: #334155;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+.project-highlights {
+  background-color: #f8fafc;
+  border-left: 3px solid #0284c7;
+  padding: 0.75rem 1rem;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 1.25rem;
+
+  .highlights-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: #475569;
+    font-size: 0.88rem;
+    line-height: 1.5;
+
+    li {
+      margin-bottom: 0.35rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 .technology-tags {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
 .technology-tags p-chip {
-  font-size: 0.70rem;
-  --p-chip-background: #4e515a;
-  --p-chip-padding: 0.3rem 0.55rem;
+  font-size: 0.75rem;
+  --p-chip-background: #e2e8f0;
+  --p-chip-color: #1e293b;
+  --p-chip-padding: 0.25rem 0.55rem;
+  --p-chip-border-radius: 6px;
+  font-weight: 500;
 }
 
 mat-card-actions {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
+  padding: 0;
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
+  gap: 0.75rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 
-a[mat-raised-button] {
-  padding: 0.7rem 1.6rem;
-  border-radius: 8px;
+  a {
+    text-decoration: none;
+  }
 }
 
 /* Fade-in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
